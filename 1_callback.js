@@ -74,16 +74,33 @@ function serveOrder(){
     },2000)
 }
 
-checkOrder("coffee",function(err){
+checkOrder("coffee",function(err){  // 1
     if(err != true){
         console.log(err);
     }
     else{
-        processOrder(function(){
+        processOrder(function(){   // 2
 
-            serveOrder();
+            serveOrder();          // 3
         });
     }
 });
+
+
+/** 
+Suppose we have many calls like many more steps 
+
+order((){
+    check((){
+        orderprocess((){
+            paymentcheck((){
+                server();
+            })
+        })
+    })
+})
+
+Nested call back that is callback, that call callback hell
+**/
 
 console.log(" Hey, i am not blocking, i can do anythink like talking to my girlfriend");
